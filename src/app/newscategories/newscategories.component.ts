@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewscategoriesComponent implements OnInit {
   categories:any = [];
+  editingCategory: any = null;
   catNew = { name: '' };
   
   constructor(private service: NewscategoriesService, private route: ActivatedRoute) { }
@@ -43,6 +44,24 @@ export class NewscategoriesComponent implements OnInit {
     }, error => {
       console.error('Error al crear categoria:', error);
     });
+  }
+
+  startEditingCategory(categoryItem: any) {
+    this.editingCategory = { ...categoryItem };
+  }
+
+  updateNewsCategory() {
+    this.service.updateNewCategory(this.editingCategory.id, this.editingCategory).subscribe(response => {
+      console.log('Categoria actualizada:', response);
+      this.loadNewscategories();
+      this.editingCategory = null;
+    }, error => {
+      console.error('Error al actualizar categoria:', error);
+    });
+  }
+
+  cancelEditingCategory() {
+    this.editingCategory = null;
   }
 
 

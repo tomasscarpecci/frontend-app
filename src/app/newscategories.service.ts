@@ -23,4 +23,9 @@ export class NewscategoriesService {
     const url = this.baseUrl + '/news/category';
     return this.http.post<any>(url, categoryData);
   }
+
+  updateNewCategory(id: string, categoryData: any) {
+    const url = `${this.baseUrl}/news/category/${id}`;
+    return this.http.put<any>(url, categoryData);
+  }
 }

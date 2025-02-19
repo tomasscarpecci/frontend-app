@@ -27,6 +27,11 @@ export class NewsService {
     return this.http.post<any>(url, newsData);
   }
 
+  updateNew(id: string, newsData: any) {
+    const url = this.baseUrl + '/news/' + id;
+    return this.http.put<any>(url, newsData);
+  }
+
 }
 
 

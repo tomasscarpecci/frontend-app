@@ -2,6 +2,17 @@
 <div *ngFor="let cat of categories">
 <h2>{{ cat.name }}</h2>
 <button (click)="deleteNewscategory(cat.id)">Eliminar Categoria</button>
+<button (click)="startEditingCategory(cat)">Modificar Categoria</button>
+<div *ngIf="editingCategory?.id === cat.id">
+<h3>Editar Categoria</h3>
+<form (submit)="updateNewsCategory()">
+  <label>Nombre de categoria:</label>
+  <input type="text" [(ngModel)]="editingCategory.name" name="name" required>
+  <br>
+  <button type="submit">Guardar Cambios</button>
+  <button type="button" (click)="cancelEditingCategory()">Cancelar</button>
+</form>
+</div>
 </div>
 <h2>Crear Nueva Categoria Noticia</h2>
 <form (submit)="createNewsCategory(); $event.preventDefault()">

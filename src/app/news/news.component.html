@@ -4,6 +4,27 @@
   <p>{{ new.contenido }}</p>
   <p>{{ new.fechaPublicacion }}</p>
   <button (click)="deleteNew(new.id)">Eliminar Noticia</button>
+  <button (click)="startEditing(new)">Modificar Noticia</button>
+  <div *ngIf="editingNews?.id === new.id">
+    <h3>Editar Noticia</h3>
+    <form (submit)="updateNew()">
+      <label>Título:</label>
+      <input type="text" [(ngModel)]="editingNews.titulo" name="titulo" required>
+      
+      <label>Contenido:</label>
+      <textarea [(ngModel)]="editingNews.contenido" name="contenido" required></textarea>
+      
+      <label>Fecha de Publicación:</label>
+      <input type="text" [(ngModel)]="editingNews.fechaPublicacion" name="fechaPublicacion" required>
+      
+      <label>Fecha de Creacion:</label>
+      <input type="text" [(ngModel)]="editingNews.fechaCreacion" name="fechaCreacion" required>
+  
+      <br>
+      <button type="submit">Guardar Cambios</button>
+      <button type="button" (click)="cancelEdit()">Cancelar</button>
+    </form>
+  </div>
 </div>
 
 <h2>Crear Nueva Noticia</h2>

@@ -1,17 +1,47 @@
+<!-- Mostrar Editoriales -->
 <button (click)="loadEditorials()">Mostrar Editoriales</button>
+
+<!-- Listado de editoriales -->
 <div *ngFor="let edito of editoriales">
-<h2>{{ edito.nombreFantasia }}</h2>
-<p>{{ edito.cuil }}</p>
-<p>{{ edito.razonSocial }}</p>
-<button (click)="deleteEditorial(edito.id)">Eliminar Editorial</button>
+  <h2>{{ edito.nombreFantasia }}</h2>
+  <p>{{ edito.cuil }}</p>
+  <p>{{ edito.razonSocial }}</p>
+
+  <!-- Botones de acción -->
+  <button (click)="deleteEditorial(edito.id)">Eliminar Editorial</button>
+  <button (click)="startEditingEditorial(edito)">Modificar Editorial</button>
+
+  <!-- Formulario de edición de editorial -->
+  <div *ngIf="editingEditorial?.id === edito.id">
+    <h3>Editar Editorial</h3>
+    <form (submit)="updateEditorial()">
+      <label>Nombre de Fantasia:</label>
+      <input type="text" [(ngModel)]="editingEditorial.nombreFantasia" name="nombreFantasia" required>
+
+      <label>CUIL:</label>
+      <input type="text" [(ngModel)]="editingEditorial.cuil" name="cuil" required>
+
+      <label>Razón Social:</label>
+      <input type="text" [(ngModel)]="editingEditorial.razonSocial" name="razonSocial" required>
+
+      <button type="submit">Guardar Cambios</button>
+      <button type="button" (click)="cancelEditingEditorial()">Cancelar</button>
+    </form>
+  </div>
 </div>
+
+<!-- Crear nueva editorial -->
 <h2>Crear Nueva Editorial</h2>
 <form (submit)="createEditorial(); $event.preventDefault()">
-<label>Nombre de Fantasia:</label>
-<input type="text" [(ngModel)]="Edit.nombreFantasia" name="nombreFantasia" required>
-<label>cuil:</label>
-<input type="text" [(ngModel)]="Edit.cuil" name="cuil" required>
-<label>Razon Social:</label>
-<input type="text" [(ngModel)]="Edit.razonSocial" name="razonSocial" required>
-<button type="submit">Crear Editorial</button>
+  <label>Nombre de Fantasia:</label>
+  <input type="text" [(ngModel)]="Edit.nombreFantasia" name="nombreFantasia" required>
+
+  <label>CUIL:</label>
+  <input type="text" [(ngModel)]="Edit.cuil" name="cuil" required>
+
+  <label>Razón Social:</label>
+  <input type="text" [(ngModel)]="Edit.razonSocial" name="razonSocial" required>
+
+  <button type="submit">Crear Editorial</button>
 </form>
+

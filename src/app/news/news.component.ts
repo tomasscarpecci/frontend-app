@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NewsComponent implements OnInit {
 
   news:any = [];
+  editingNews: any = null;
   newNews = { titulo: '', contenido: '', fechaPublicacion: '', fechaCreacion: '' };
 
   constructor(private service:NewsService, private route: ActivatedRoute) { }
@@ -55,6 +56,28 @@ createNew() {
     });
   }
 
+ startEditing(newItem: any) {
+    this.editingNews = { ...newItem };
+  }
+
+  updateNew() {
+    if (!this.editingNews) return;
+    
+    this.service.updateNew(this.editingNews.id, this.editingNews).subscribe(response => {
+      console.log('Noticia actualizada:', response);
+      this.loadNews();
+      this.editingNews = null; // Ocultar formulario después de actualizar
+    }, error => {
+      console.error('Error al actualizar noticia:', error);
+    });
+  }
+
+  cancelEdit() {
+    this.editingNews = null; // Oculta el formulario sin guardar cambios
+  }
+}
+
+
 
   
-}
+

@@ -23,4 +23,9 @@ export class EditorialsService {
     const url = this.baseUrl + '/editorial';
     return this.http.post<any>(url, editorialData);
   }
+
+  updateEditorial(id: string, editorialData: any) {
+    const url = `${this.baseUrl}/editorial/${id}`;
+    return this.http.put<any>(url, editorialData);
+  }
 }

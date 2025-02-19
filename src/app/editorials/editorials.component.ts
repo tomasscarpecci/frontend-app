@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditorialsComponent implements OnInit {
   editoriales:any = [];
+  editingEditorial: any = null;
   Edit = { nombreFantasia: '', cuil: '', razonSocial: ''}
   
   constructor(private service: EditorialsService, private route: ActivatedRoute) { }
@@ -46,5 +47,23 @@ export class EditorialsComponent implements OnInit {
     });
 
 }
+
+startEditingEditorial(editorialItem: any) {
+    this.editingEditorial = { ...editorialItem };
+  }
+
+updateEditorial() {
+    this.service.updateEditorial(this.editingEditorial.id, this.editingEditorial).subscribe(response => {
+      console.log('Editorial actualizada:', response);
+      this.loadEditorials();
+      this.editingEditorial = null;
+    }, error => {
+      console.error('Error al actualizar editorial:', error);
+    });
+  }
+
+  cancelEditingEditorial() {
+    this.editingEditorial = null;
+  }
 
 }
