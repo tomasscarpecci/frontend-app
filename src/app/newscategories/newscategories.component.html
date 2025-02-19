@@ -1,6 +1,2 @@
-
 <button (click)="loadNewscategories()">Mostrar Categorias</button>
-<div *ngFor="let newscategory of newscategories">
-  <h2>{{ newscategory.name }}</h2>
-
-</div>
+<pre>{{ newscategories | json }}</pre>

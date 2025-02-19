@@ -7,11 +7,9 @@ import { UsersComponent } from './users/users.component.js';
 
 export const routes: Routes = [
   {path: 'editorial', component: EditorialsComponent},
-  {path: 'news/category', component: NewscategoriesComponent},
+  {path: 'newscategories', component: NewscategoriesComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'news/:id', component: NewsComponent },
   {path: 'news', component: NewsComponent},
-  {path: '**', component: NewsComponent},
 ];
 
 @NgModule({
@@ -19,3 +17,6 @@ export const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+/*  {path: 'news/:id', component: NewsComponent },
+    {path: '**', component: NewsComponent},*/

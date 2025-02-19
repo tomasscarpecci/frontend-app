@@ -16,7 +16,7 @@ export class NewscategoriesComponent implements OnInit {
   }
 
   loadNewscategories(){
-    this.service.getNewscategories().subscribe(response => this.newscategories = response.newscategories);
+    this.service.getNewscategories().subscribe(response => this.newscategories = response);
   }
 
 

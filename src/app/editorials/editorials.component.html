@@ -1,6 +1,3 @@
 <button (click)="loadEditorials()">Mostrar Editoriales</button>
-<div *ngFor="let editorial of editorials">
-  <h2>{{ editorial.nombreFantasia }}</h2>
-  <p>{{ editorial.cuil }}</p>
-  <p>{{ editorial.razonSocial }}</p>
-</div>
+<pre>{{ editorials | json }}</pre>
+

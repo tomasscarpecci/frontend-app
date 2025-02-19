@@ -13,10 +13,11 @@ export class UsersComponent implements OnInit {
   constructor(private service: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void{
+    this.loadUsers();
   }
 
   loadUsers(){
-    this.service.getUsers().subscribe(response => this.users = response.users);
+    this.service.getUsers().subscribe(response => this.users = response);
   }
 
 }

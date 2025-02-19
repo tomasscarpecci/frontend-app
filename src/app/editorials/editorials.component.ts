@@ -10,13 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 export class EditorialsComponent implements OnInit {
   editorials:any = [];
   
-  constructor(private service: EditorialsService) { }
+  constructor(private service: EditorialsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void{
   }
 
   loadEditorials(){
-    this.service.getEditorials().subscribe(response => this.editorials = response.editorials);
+    this.service.getEditorials().subscribe(response => this.editorials = response);
   }
 
 }
