@@ -5,7 +5,7 @@
   <p>{{ user.Mail }}</p>
   <button (click)="deleteUser(user.id)">Eliminar Usuario</button>
 </div>
-<button (click)="createUser()">Crear Usuario</button>
+<h2>Crear Nuevo Usuario</h2>
 <form (submit)="createUser(); $event.preventDefault()">
   <label>Nombre:</label>
   <input type="text" [(ngModel)]="Use.Nombre" name="Nombre" required>
