@@ -3,4 +3,22 @@
   <h2>{{ new.titulo }}</h2>
   <p>{{ new.contenido }}</p>
   <p>{{ new.fechaPublicacion }}</p>
+  <button (click)="deleteNew(new.id)">Eliminar Noticia</button>
 </div>
+
+<h2>Crear Nueva Noticia</h2>
+<form (submit)="createNew(); $event.preventDefault()">
+  <label>Título:</label>
+  <input type="text" [(ngModel)]="newNews.titulo" name="titulo" required>
+
+  <label>Contenido:</label>
+  <textarea [(ngModel)]="newNews.contenido" name="contenido" required></textarea>
+
+  <label>Fecha de Publicación:</label>
+  <input type="text" [(ngModel)]="newNews.fechaPublicacion" name="fechaPublicacion" required>
+
+  <label>Fecha de Creacion:</label>
+  <input type="text" [(ngModel)]="newNews.fechaCreacion" name="fechaCreacion" required>
+
+  <button type="submit">Crear Noticia</button>
+</form>

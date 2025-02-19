@@ -13,4 +13,14 @@ export class NewscategoriesService {
     const url = this.baseUrl + '/news/category';
     return this.http.get<any>(url);
   }
+
+  deleteNewCategory(id: string) {
+  const url = `${this.baseUrl}/news/category/${id}`;
+  return this.http.delete<any>(url);
+  }
+
+  createNewCategory(categoryData: any) {
+    const url = this.baseUrl + '/news/category';
+    return this.http.post<any>(url, categoryData);
+  }
 }

@@ -1,3 +1,17 @@
 <button (click)="loadEditorials()">Mostrar Editoriales</button>
-<pre>{{ editorials | json }}</pre>
-
+<div *ngFor="let edito of editoriales">
+<h2>{{ edito.nombreFantasia }}</h2>
+<p>{{ edito.cuil }}</p>
+<p>{{ edito.razonSocial }}</p>
+<button (click)="deleteEditorial(edito.id)">Eliminar Editorial</button>
+</div>
+<h2>Crear Nueva Editorial</h2>
+<form (submit)="createEditorial(); $event.preventDefault()">
+<label>Nombre de Fantasia:</label>
+<input type="text" [(ngModel)]="Edit.nombreFantasia" name="nombreFantasia" required>
+<label>cuil:</label>
+<input type="text" [(ngModel)]="Edit.cuil" name="cuil" required>
+<label>Razon Social:</label>
+<input type="text" [(ngModel)]="Edit.razonSocial" name="razonSocial" required>
+<button type="submit">Crear Editorial</button>
+</form>

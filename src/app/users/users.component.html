@@ -1,2 +1,19 @@
 <button (click)="loadUsers()">Mostrar Usuarios</button>
-<pre>{{ users | json }}</pre>
+<div *ngFor="let user of data">
+  <p>{{ user.Nombre }}</p>
+  <p>{{ user.Apellido }}</p>
+  <p>{{ user.Mail }}</p>
+  <button (click)="deleteUser(user.id)">Eliminar Usuario</button>
+</div>
+<button (click)="createUser()">Crear Usuario</button>
+<form (submit)="createUser(); $event.preventDefault()">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="Use.Nombre" name="Nombre" required>
+  <label>Apellido:</label>
+  <input type="text" [(ngModel)]="Use.Apellido" name="Apellido" required>
+  <label>Mail:</label>
+  <input type="text" [(ngModel)]="Use.Mail" name="Mail" required>
+  <label>Contraseña:</label>
+  <input type="text" [(ngModel)]="Use.Clave" name="Clave" required>
+  <button type="submit">Crear Usuario</button>
+</form>

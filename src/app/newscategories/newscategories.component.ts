@@ -8,7 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './newscategories.component.css'
 })
 export class NewscategoriesComponent implements OnInit {
-  newscategories:any = [];
+  categories:any = [];
+  catNew = { name: '' };
   
   constructor(private service: NewscategoriesService, private route: ActivatedRoute) { }
 
@@ -16,7 +17,32 @@ export class NewscategoriesComponent implements OnInit {
   }
 
   loadNewscategories(){
-    this.service.getNewscategories().subscribe(response => this.newscategories = response);
+    this.service.getNewscategories().subscribe(response => this.categories = response.categories);
+  }
+
+  deleteNewscategory(id: string) {
+  if (!id) {
+    console.error("Error: ID no válido");
+    return;
+  }
+  this.service.deleteNewCategory(id).subscribe({
+    next: () => {
+      console.log(`Noticia con ID ${id} eliminada`);
+      this.loadNewscategories();
+    },
+    error: (err) => {
+      console.error("Error al eliminar la categoria:", err);
+    }
+  });
+}
+
+  createNewsCategory() {
+    this.service.createNewCategory(this.catNew).subscribe(response => {
+      console.log('Categoria creada:', response);
+      this.loadNewscategories();
+    }, error => {
+      console.error('Error al crear categoria:', error);
+    });
   }
 
 

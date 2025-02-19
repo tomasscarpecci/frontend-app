@@ -18,5 +18,7 @@ export const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-/*  {path: 'news/:id', component: NewsComponent },
-    {path: '**', component: NewsComponent},*/
+/*  
+    {path: '**', component: NewsComponent},
+    {path: 'news/:id', component: NewsComponent },
+    {path: 'newscategories/:id', component: NewsComponent },*/

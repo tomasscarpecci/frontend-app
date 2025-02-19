@@ -7,10 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditorialsComponent } from './editorials/editorials.component.js';
 import { NewscategoriesComponent } from './newscategories/newscategories.component.js';
 import { UsersComponent } from './users/users.component.js';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NewsComponent, EditorialsComponent, NewscategoriesComponent, UsersComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

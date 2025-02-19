@@ -1,2 +1,9 @@
 <button (click)="loadNewscategories()">Mostrar Categorias</button>
-<pre>{{ newscategories | json }}</pre>
+<div *ngFor="let cat of categories">
+<h2>{{ cat.name }}</h2>
+<button (click)="deleteNewscategory(cat.id)">Eliminar Categoria</button>
+</div>
+<h2>Crear Nueva Categoria Noticia</h2>
+<form (submit)="createNewsCategory(); $event.preventDefault()">
+  <label>Nombre de categoria:</label>
+  <input type="text" [(ngModel)]="catNew.name" name="name" required>
