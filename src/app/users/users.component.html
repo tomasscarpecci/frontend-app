@@ -1,0 +1,8 @@
+
+<button (click)="loadUsers()">Mostrar Usuarios</button>
+<div *ngFor="let user of users">
+  <p>{{ user.Nombre }}</p>
+  <p>{{ user.Apellido }}</p>
+  <p>{{ user.Mail }}</p>
+
+</div>

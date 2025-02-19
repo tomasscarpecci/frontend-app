@@ -1,0 +1,6 @@
+<button (click)="loadNews()">Mostrar Noticias</button>
+<div *ngFor="let new of news">
+  <h2>{{ new.titulo }}</h2>
+  <p>{{ new.contenido }}</p>
+  <p>{{ new.fechaPublicacion }}</p>
+</div>
